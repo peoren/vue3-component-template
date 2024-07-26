@@ -3,6 +3,7 @@
   "private": false,
   "version": "0.0.1",
   "type": "module",
+  "types": "./dist/my-lib.d.ts",
   "description": "a vue3-component-template",
   "keywords": [
     "vue3",
@@ -13,18 +14,20 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-lib.umd.cjs",
-  "module": "./dist/my-lib.js",
+  "main": "./dist/my-lib.umd.js",
+  "module": "./dist/my-lib.es.js",
   "exports": {
     ".": {
-      "import": "./dist/my-lib.js",
-      "require": "./dist/my-lib.umd.cjs"
+      "import": "./dist/my-lib.es.js",
+      "require": "./dist/my-lib.umd.js",
+      "types": "./dist/my-lib.d.ts"
     }
   },
   "scripts": {
     "dev": "vite --force --host",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish": "npm run build && npm publish --access public"
   },
   "dependencies": {
     "@vue/eslint-config-typescript": "^12.0.0",

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+import myComponent from './components/my-component/index.vue'
 </script>
 
 <template>
   <div>
-      这是一个插件
+<myComponent />
   </div>
 </template>
 
