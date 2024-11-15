@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from "@vitejs/plugin-vue-jsx";
 import dts from 'vite-plugin-dts'
 import eslintPlugin  from 'vite-plugin-eslint'
 // TODO:添加css处理
@@ -9,10 +10,18 @@ import eslintPlugin  from 'vite-plugin-eslint'
 // // import { viteStaticCopy } from 'vite-plugin-static-copy';
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),{
-    ...eslintPlugin(),
-    apply: 'build',
+  resolve: {
+    // 配置路径别名
+    alias: {
+      '@': resolve(__dirname, './src')
+    },
   },
+  plugins: [
+    vue(),
+    vueJsx(),{
+      ...eslintPlugin(),
+      apply: 'build',
+    },
     { // 不在开发时报错
       ...eslintPlugin({
         failOnWarning: false,
@@ -31,12 +40,7 @@ export default defineConfig({
   //     }
   //   ]
   // })
-  resolve: {
-    // 配置路径别名
-    alias: {
-      '@': '/src',
-    },
-  },
+
 
   build: {
     lib: {

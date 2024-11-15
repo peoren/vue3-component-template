@@ -5,14 +5,15 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    // jsx解析模板
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "preserve",
 
     /* Linting */
     "strict": true,
@@ -21,7 +22,11 @@
     "noFallthroughCasesInSwitch": true,
     "declaration": true, // 生成声明文件
     "declarationDir": "./dist", // 声明文件输出目录
-    "emitDeclarationOnly": true // 仅生成声明文件
+    "emitDeclarationOnly": true, // 仅生成声明文件
+    // 非相对模块导入的路径映射配置，根据 baseUrl 配置进行路径计算
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
